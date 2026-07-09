@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17
+
+    container_name: permitflow-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: permitflow
+      POSTGRES_USER: permitflow_user
+      POSTGRES_PASSWORD: permitflow_dev_password
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - permitflow_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  permitflow_postgres_data:
